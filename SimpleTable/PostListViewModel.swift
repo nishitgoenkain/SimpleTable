@@ -8,19 +8,23 @@
 import Foundation
 
 protocol PostListViewModelProtocol {
-    func fetchPostList(success: @escaping (Bool) -> ())
     var posts: [Post] { get }
+    func fetchPostList(pageNo: Int, success: @escaping (Bool) -> ())
+    func shouldFetchNextPage(for currentPageNo: Int) -> Bool
 }
 
 class PostListViewModel {
-    static let urlString = "https://jsonplaceholder.typicode.com/posts?_page=1&_limit=10"
+    var pageLimit = 10
+    static let urlString = "https://jsonplaceholder.typicode.com/posts"
     var posts: [Post] = []
+    
 }
 
 extension PostListViewModel: PostListViewModelProtocol {
-    func fetchPostList(success: @escaping (Bool) -> ()) {
+    func fetchPostList(pageNo: Int, success: @escaping (Bool) -> ()) {
+        let paginatedUrlString = PostListViewModel.urlString + "?_page=\(pageNo)&_limit=\(pageLimit)"
         
-        guard let url = URL(string: PostListViewModel.urlString) else {
+        guard let url = URL(string: paginatedUrlString) else {
             success(false)
             return
         }
@@ -34,12 +38,16 @@ extension PostListViewModel: PostListViewModelProtocol {
                 
                 do {
                     let postList = try JSONDecoder().decode([Post].self, from: data)
-                    self?.posts = postList
+                    self?.posts.append(contentsOf: postList)
                     success(true)
                 } catch {
                     success(false)
                 }
             }
         }.resume()
+    }
+    
+    func shouldFetchNextPage(for currentPageNo: Int) -> Bool {
+        return posts.count == pageLimit * currentPageNo
     }
 }
