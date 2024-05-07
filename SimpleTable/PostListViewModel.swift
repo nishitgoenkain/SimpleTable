@@ -11,13 +11,13 @@ protocol PostListViewModelProtocol {
     var posts: [Post] { get }
     func fetchPostList(pageNo: Int, success: @escaping (Bool) -> ())
     func shouldFetchNextPage(for currentPageNo: Int) -> Bool
+    func getPostDetails(for index: Int) -> String
 }
 
 class PostListViewModel {
     var pageLimit = 10
     static let urlString = "https://jsonplaceholder.typicode.com/posts"
     var posts: [Post] = []
-    
 }
 
 extension PostListViewModel: PostListViewModelProtocol {
@@ -49,5 +49,10 @@ extension PostListViewModel: PostListViewModelProtocol {
     
     func shouldFetchNextPage(for currentPageNo: Int) -> Bool {
         return posts.count == pageLimit * currentPageNo
+    }
+    
+    func getPostDetails(for index: Int) -> String {
+        let post = posts[index]
+        return "\(post.id). \(post.title)\n\nDescription: \(post.body)\n\nUser Id: \(post.userId)"
     }
 }

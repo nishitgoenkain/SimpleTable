@@ -7,16 +7,18 @@
 
 import UIKit
 
-class PostListViewController: UIViewController {
-    @IBOutlet var tableView: UITableView!
-    var viewModel: PostListViewModelProtocol = PostListViewModel()
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+final class PostListViewController: UIViewController {
+    @IBOutlet private weak var tableView: UITableView!
+    private var viewModel: PostListViewModelProtocol = PostListViewModel()
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     static let cellId = "PostListCell"
-    var currentPageNo = 1
+    private var currentPageNo = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Posts"
+        self.tableView.tableHeaderView = UIView()
         showActivityIndicator()
         fetchPosts()
     }
@@ -74,6 +76,15 @@ extension PostListViewController: UITableViewDelegate {
                 fetchPosts()
                 activityIndicator.startAnimating()
             }
+        }
+    }
+}
+
+extension PostListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PostDetails", let vc = segue.destination as? PostDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+            vc.details = viewModel.getPostDetails(for: indexPath.row)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }

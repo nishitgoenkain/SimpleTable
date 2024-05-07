@@ -19,6 +19,7 @@
 		1DB89A042BE4D9E00052439A /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB89A032BE4D9E00052439A /* PostListViewModel.swift */; };
 		1DB89A062BE4DA270052439A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB89A052BE4DA270052439A /* Post.swift */; };
 		1DB89A0A2BE50D8F0052439A /* PostListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB89A092BE50D8F0052439A /* PostListCell.swift */; };
+		1DB89A0C2BEA08B90052439A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB89A0B2BEA08B90052439A /* PostDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1DB89A032BE4D9E00052439A /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
 		1DB89A052BE4DA270052439A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1DB89A092BE50D8F0052439A /* PostListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListCell.swift; sourceTree = "<group>"; };
+		1DB89A0B2BEA08B90052439A /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				1DB899D32BE4D92C0052439A /* AppDelegate.swift */,
 				1DB899D52BE4D92C0052439A /* SceneDelegate.swift */,
 				1DB899D72BE4D92C0052439A /* PostListViewController.swift */,
+				1DB89A0B2BEA08B90052439A /* PostDetailViewController.swift */,
 				1DB89A032BE4D9E00052439A /* PostListViewModel.swift */,
 				1DB89A092BE50D8F0052439A /* PostListCell.swift */,
 				1DB89A052BE4DA270052439A /* Post.swift */,
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DB899D82BE4D92C0052439A /* PostListViewController.swift in Sources */,
+				1DB89A0C2BEA08B90052439A /* PostDetailViewController.swift in Sources */,
 				1DB899D42BE4D92C0052439A /* AppDelegate.swift in Sources */,
 				1DB89A0A2BE50D8F0052439A /* PostListCell.swift in Sources */,
 				1DB89A062BE4DA270052439A /* Post.swift in Sources */,
